@@ -1,3 +1,8 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 # Sistema de Inventario y Facturación
 
 ---
@@ -50,19 +55,19 @@ Para montar la base de datos desde cero en el entorno local con DBeaver o client
 ## Índice de Documentos y Scripts
 
 ```text
-├── docs/
+├── capturas/                  
+│   ├── 01_lista_tablas.png
+│   └── 02_reporte_bajo_stock.png
+├── docs/                      
 │   ├── 01_descripcion_sistema.md
 │   ├── 02_diccionario_datos.md
 │   ├── 03_justificacion_relaciones.md
 │   ├── 04_normalizacion.md
 │   └── 05_paso_a_paso.md
-├── img/
+├── img/                       
 │   ├── modelo_er.png
 │   └── modelo_relacional.png
-├── capturas/  
-│   └── 01_lista_tablas.png
-│   └── 02_reporte_bajo_stock.png
-└── sql/
+└── sql/                       
     ├── 01_ddl_crear_base_datos.sql
     ├── 02_ddl_crear_tablas.sql
     ├── 03_dml_datos_prueba.sql

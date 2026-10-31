@@ -1,0 +1,186 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+
+\section{Sistema de Inventario y
+Facturación}\label{sistema-de-inventario-y-facturaciuxf3n}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Información General}\label{informaciuxf3n-general}
+
+\begin{itemize}
+\item
+  \textbf{Curso:} Base de Datos I\\
+\item
+  \textbf{Motor de Base de Datos:} Oracle data base (DBeaver versión
+  26.2.0)
+\item
+  \textbf{Alumna:} Sol Arely Martínez García\\
+\item
+  \textbf{Carnet:} 7590-24-4829
+\item ~
+  \subsection{\texorpdfstring{\textbf{Fecha:}
+  31/10/2026}{Fecha: 31/10/2026}}\label{fecha-31102026}
+\end{itemize}
+
+\subsection{Descripción Breve del Sistema y
+Alcance}\label{descripciuxf3n-breve-del-sistema-y-alcance}
+
+\subsubsection{Descripción}\label{descripciuxf3n}
+
+Este proyecto consiste en el diseño e implementación de una base de
+datos relacional para gestionar el control de inventario y el proceso de
+facturación en un negocio comercial (enfocado en una ferretería). El
+sistema permite administrar los datos principales de la tienda
+(productos, categorías, proveedores y clientes) y llevar un registro
+detallado de cada venta que se realiza.
+
+\subsubsection{Alcance del Sistema}\label{alcance-del-sistema}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Gestión de Catálogos:} Registro y consulta de categorías de
+  productos, proveedores y clientes.
+\item
+  \textbf{Control de Inventario:} Manejo de existencias (stock actual),
+  precios de compra y venta, vinculados con sus respectivas categorías y
+  proveedores.
+\item
+  \textbf{Proceso de Facturación:} Registro completo de ventas con
+  encabezado (datos de la factura y cliente) y detalle línea por línea
+  (productos comprados, cantidades y subtotales).
+\item
+  \textbf{Automatización Integrada:} Actualización automática del stock
+  disponible y cálculo de totales mediante la lógica implementada en la
+  base de datos
+\item
+  \textbf{Reportes y Consultas:} Generación de reportes clave para la
+  toma de decisiones, tales como productos con bajo stock, historial de
+  ventas por cliente, productos más vendidos e inventario valorizado por
+  proveedor.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Instrucciones Rápidas de
+Ejecución}\label{instrucciones-ruxe1pidas-de-ejecuciuxf3n}
+
+Para montar la base de datos desde cero en el entorno local con DBeaver
+o cliente SQL preferido, seguirestos pasos ejecutando los scripts
+ubicados en la carpeta \texttt{sql/} en el orden exacto indicado:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Crear la Base de Datos:}\\
+  Ejecuta el script \texttt{sql/01\_ddl\_crear\_base\_datos.sql} para
+  preparar el espacio de trabajo.
+\item
+  \textbf{Crear la Estructura de Tablas:}\\
+  Ejecuta el archivo \texttt{sql/02\_ddl\_crear\_tablas.sql}. Este
+  script genera todas las tablas necesarias con sus respectivas llaves
+  primarias, llaves foráneas y reglas de validación (restricciones).
+\item
+  \textbf{Cargar Datos de Prueba:}\\
+  Ejecuta \texttt{sql/03\_dml\_datos\_prueba.sql} para poblar el sistema
+  con información inicial (catálogos de clientes, proveedores,
+  categorías, productos con stock y facturas de ejemplo).
+\item
+  \textbf{Probar Reportes y Consultas:}\\
+  Abre y ejecuta \texttt{sql/04\_consultas\_reportes.sql} para verificar
+  el correcto funcionamiento del sistema y visualizar los reportes
+  generados.
+\end{enumerate}
+
+\subsection{Diagrama
+Entidad-Relación}\label{diagrama-entidad-relaciuxf3n}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{!{[}Diagrama\ Entidad-Relación{]}(img/modelo\_er.png)}
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Índice de Documentos y
+Scripts}\label{uxedndice-de-documentos-y-scripts}
+
+```text ├── capturas/\\
+│ ├── 01\_lista\_tablas.png │ └── 02\_reporte\_bajo\_stock.png ├──
+docs/\\
+│ ├── 01\_descripcion\_sistema.md │ ├── 02\_diccionario\_datos.md │ ├──
+03\_justificacion\_relaciones.md │ ├── 04\_normalizacion.md │ └──
+05\_paso\_a\_paso.md ├── img/\\
+│ ├── modelo\_er.png │ └── modelo\_relacional.png └── sql/\\
+├── 01\_ddl\_crear\_base\_datos.sql ├── 02\_ddl\_crear\_tablas.sql ├──
+03\_dml\_datos\_prueba.sql └── 04\_consultas\_reportes.sql
+
+\end{document}
